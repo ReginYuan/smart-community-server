@@ -10,18 +10,16 @@ const queryall = async () => {
 
   try {
     resultSet = await clickhouseDb.query({
-      query: "SELECT * FROM Album",
+      query: "SELECT * FROM 06b24b1548504254a2041f1421a44e71",
       format: "JSONEachRow"
     });
-
     const dataset = await resultSet.json();
-    // log4js.info("ClickHouse查询成功:", dataset);
-    console.log('成功',error)
+    log4js.info("ClickHouse查询连接成功:", dataset);
   } catch (error) {
-    // log4js.error("ClickHouse查询失败:", resultSet); // 在这里也可以访问 resultSet
-    // log4js.error("Error details:", error);
-    console.log('error',error)
+    log4js.error("ClickHouse查询连接失败:", resultSet, error);
   }
 };
 
 queryall();
+
+module.exports = clickhouseDb;
