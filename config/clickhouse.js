@@ -10,7 +10,7 @@ const queryall = async () => {
 
   try {
     resultSet = await clickhouseDb.query({
-      query: "SELECT * FROM 06b24b1548504254a2041f1421a44e71",
+      query: "SELECT * FROM face",
       format: "JSONEachRow"
     });
     const dataset = await resultSet.json();
