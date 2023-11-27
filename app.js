@@ -20,6 +20,7 @@ const leave = require('./routes/leave')
 onerror(app)
 
 require('./config/db')
+require('./config/clickhouse')
 
 // middlewares
 app.use(bodyparser({

@@ -13,9 +13,9 @@ mongoose.connect(config.URL,{
 const db = mongoose.connection;
 
 db.on('error',()=>{
-    log4js.error('***数据库连接失败***')
+    log4js.error('***mongoose数据库连接失败***')
 })
 
 db.on('open',()=>{
-    log4js.info('***数据库连接成功***')
+    log4js.info('***mongoose 数据库连接成功***')
 })
