@@ -15,7 +15,9 @@ const menus = require('./routes/menus')
 const roles = require('./routes/roles')
 const depts = require('./routes/depts')
 const leave = require('./routes/leave')
-
+const face = require('./routes/face')
+const device = require('./routes/device')
+const faceid = require('./routes/faceid')
 // error handler
 onerror(app)
 
@@ -59,6 +61,9 @@ router.use(menus.routes(), menus.allowedMethods())
 router.use(roles.routes(), roles.allowedMethods())
 router.use(depts.routes(), depts.allowedMethods())
 router.use(leave.routes(), leave.allowedMethods())
+router.use(face.routes(), face.allowedMethods())
+router.use(device.routes(), device.allowedMethods())
+router.use(faceid.routes(), faceid.allowedMethods())
 app.use(router.routes(), router.allowedMethods())
 
 // error-handling
