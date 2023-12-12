@@ -18,7 +18,7 @@ dependencies:
     specifier: ^8.5.1
     version: 8.5.1
   koa:
-    specifier: ^2.7.0
+    specifier: ^2.14.2
     version: 2.14.2
   koa-bodyparser:
     specifier: ^4.2.1
@@ -47,6 +47,9 @@ dependencies:
   koa-views:
     specifier: ^6.2.0
     version: 6.3.1(pug@3.0.2)
+  koa-websocket:
+    specifier: ^7.0.0
+    version: 7.0.0
   mongoose:
     specifier: ^5.11.19
     version: 5.13.21
@@ -2521,6 +2524,19 @@ packages:
       - whiskers
     dev: false
 
+  /koa-websocket@7.0.0:
+    resolution: {integrity: sha512-MsHUFKqA4+j+0dpPKWtsvZfnpQ1NcgF+AaTZQZ4B3Xj/cWK31qqmKx9HnA5Gw1LV2aIDzqwy0IDBsZYRurTUAg==}
+    dependencies:
+      co: 4.6.0
+      debug: 4.3.4
+      koa-compose: 4.1.0
+      ws: 8.15.0
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+    dev: false
+
   /koa@2.14.2:
     resolution: {integrity: sha512-VFI2bpJaodz6P7x2uyLiX6RLYpZmOJqNmoCst/Yyd7hQlszyPwG/I9CQJ63nOtKSxpt5M7NH67V6nJL2BwCl7g==}
     engines: {node: ^4.8.4 || ^6.10.1 || ^7.10.1 || >= 8.1.4}
@@ -4398,6 +4414,19 @@ packages:
     peerDependencies:
       bufferutil: ^4.0.1
       utf-8-validate: ^5.0.2
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: false
+
+  /ws@8.15.0:
+    resolution: {integrity: sha512-H/Z3H55mrcrgjFwI+5jKavgXvwQLtfPCUEp6pi35VhoB0pfcHnSoyuTzkBEZpzq49g1193CUEwIvmsjcotenYw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
     peerDependenciesMeta:
       bufferutil:
         optional: true

@@ -18,6 +18,8 @@ const leave = require("./routes/leave");
 const face = require("./routes/face");
 const device = require("./routes/device");
 const faceid = require("./routes/faceid");
+const websockify = require("koa-websocket");
+
 // error handler
 onerror(app);
 
@@ -60,6 +62,19 @@ app.use(
   })
 );
 
+// Wrap the Koa app with WebSocket support
+const appWithWebSocket = websockify(app);
+
+// WebSocket路由
+appWithWebSocket.ws.use((ctx, next) => {
+  // 在这里处理WebSocket连接
+  console.log("WebSocket连接建立");
+  ctx.websocket.send("连接成功");
+
+  // 继续处理后续中间件和路由
+  return next(ctx);
+});
+
 router.prefix("/api");
 
 router.use(users.routes(), users.allowedMethods());
@@ -70,11 +85,13 @@ router.use(leave.routes(), leave.allowedMethods());
 router.use(face.routes(), face.allowedMethods());
 router.use(device.routes(), device.allowedMethods());
 router.use(faceid.routes(), faceid.allowedMethods());
-app.use(router.routes(), router.allowedMethods());
+
+// 应用Koa路由
+appWithWebSocket.use(router.routes(), router.allowedMethods());
 
 // error-handling
-app.on("error", (err, ctx) => {
+appWithWebSocket.on("error", (err, ctx) => {
   log4js.error(`${err.stack}`);
 });
 
-module.exports = app;
+module.exports = appWithWebSocket;
